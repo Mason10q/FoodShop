@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Главная"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/search"
+        android:title="Поиск"
+        android:icon="@drawable/search_normal"/>
+
+    <item
+        android:id="@+id/bag"
+        android:title="Корзина"
+        android:icon="@drawable/bag"/>
+
+    <item
+        android:id="@+id/profile"
+        android:title="Аккаунт"
+        android:icon="@drawable/profile_circle"/>
+
+</menu>
