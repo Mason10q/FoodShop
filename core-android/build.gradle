@@ -1,10 +1,11 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
-    namespace 'com.example.core_navigation'
+    namespace 'com.example.core_android'
     compileSdk 33
 
     defaultConfig {
@@ -22,16 +23,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '17'
+    }
+
+    viewBinding{
+        enabled=true
     }
 }
 
 dependencies {
-    implementation project(":feature-shop")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -40,9 +44,11 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //navigationComponent
-    def nav_version = "2.6.0"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.8'
 
+    //dagger
+    def dagger_v = "2.13"
+    implementation "com.google.dagger:dagger:$dagger_v"
+    kapt "com.google.dagger:dagger-compiler:$dagger_v"
 }

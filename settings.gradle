@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "FoodShop"
 include ':app'
 include ':core-navigation'
+include ':feature-shop'
+include ':core-android'
