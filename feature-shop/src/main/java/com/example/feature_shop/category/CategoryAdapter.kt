@@ -1,9 +1,7 @@
-package com.example.feature_shop
+package com.example.feature_shop.category
 
-import android.util.Log
 import android.view.View
 import com.example.abstracttesting.adapter.BaseAdapter
-import com.example.core_android.CustomCardView
 import com.example.feature_shop.databinding.ItemCategoryBinding
 import com.squareup.picasso.Picasso
 import javax.inject.Inject

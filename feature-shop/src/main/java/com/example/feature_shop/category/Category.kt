@@ -1,4 +1,4 @@
-package com.example.feature_shop
+package com.example.feature_shop.category
 
 data class Category(
     val name: String,
