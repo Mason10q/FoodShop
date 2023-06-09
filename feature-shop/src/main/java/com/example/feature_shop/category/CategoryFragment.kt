@@ -9,12 +9,11 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.feature_shop.ShopComponent
-import com.example.feature_shop.ShopViewModel
 import com.example.feature_shop.databinding.FragmentCategoryBinding
 
 class CategoryFragment: Fragment(){
 
-    private val viewModel: ShopViewModel by viewModels()
+    private val viewModel: CategoryViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
