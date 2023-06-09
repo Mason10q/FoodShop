@@ -21,4 +21,22 @@ object DishMapper {
         return res
     }
 
+    fun mapByTegs(dishes: List<Dish>, tegs: List<String>): List<List<Dish>>{
+        val result = ArrayList<List<Dish>>()
+
+        for(teg in tegs){
+            val r = ArrayList<Dish>()
+
+            dishes.forEach{
+                if(teg in it.tegs){
+                    r.add(it)
+                }
+            }
+
+            result.add(r)
+        }
+
+        return result
+    }
+
 }

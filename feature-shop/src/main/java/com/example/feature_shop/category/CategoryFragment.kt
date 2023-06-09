@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.feature_shop.ShopComponent
+import com.example.feature_shop.ShopViewModel
 import com.example.feature_shop.databinding.FragmentCategoryBinding
 
 class CategoryFragment: Fragment(){
 
-    private val viewModel: CategoryViewModel by viewModels()
+    private val viewModel: ShopViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +37,10 @@ class CategoryFragment: Fragment(){
 
         viewModel.categoriesData.observe(viewLifecycleOwner){
             adapter.addItems(it)
+        }
+
+        adapter.setOnCategoryClickListener { _, _ ->
+            findNavController().navigate(com.example.core_navigation.R.id.dishFragment)
         }
 
         return binding.root

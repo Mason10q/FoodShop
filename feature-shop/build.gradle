@@ -38,6 +38,7 @@ android {
 dependencies {
     implementation project(":core-android")
     implementation project(":core-network")
+    implementation project(":core-navigation")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -72,5 +73,10 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retro_v"
     implementation "com.squareup.retrofit2:converter-gson:$retro_v"
     implementation "com.squareup.retrofit2:adapter-rxjava3:$retro_v"
+
+    //navigationComponent
+    def nav_version = "2.6.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 }

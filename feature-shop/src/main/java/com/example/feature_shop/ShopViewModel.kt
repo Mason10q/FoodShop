@@ -1,16 +1,18 @@
-package com.example.feature_shop.category
+package com.example.feature_shop
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.core_android.BaseViewModel
 import com.example.core_network.Api
+import com.example.feature_shop.category.Category
+import com.example.feature_shop.category.CategoryMapper
 import com.example.feature_shop.dish.Dish
 import com.example.feature_shop.dish.DishMapper
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class CategoryViewModel : BaseViewModel() {
+class ShopViewModel : BaseViewModel() {
 
     @Inject
     lateinit var api: Api
