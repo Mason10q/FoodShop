@@ -4,17 +4,14 @@ import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.abstracttesting.adapter.BaseAdapter
 import com.example.feature_shop.ShopComponent
-import com.example.feature_shop.category.Category
 import com.example.feature_shop.databinding.ItemDishesBinding
-import com.squareup.picasso.Picasso
-import javax.inject.Inject
 
 
 class DishPagerAdapter: BaseAdapter<DishPagerItem, ItemDishesBinding>(ItemDishesBinding::inflate) {
 
-    private var onDishClicked = { _: View, _: Dish ->}
+    private var onDishClicked = { _: View, _: com.example.core_entities.Dish ->}
 
-    fun setOnDishClick(l: (view: View, item: Dish) -> Unit){
+    fun setOnDishClick(l: (view: View, item: com.example.core_entities.Dish) -> Unit){
         onDishClicked = l
     }
 

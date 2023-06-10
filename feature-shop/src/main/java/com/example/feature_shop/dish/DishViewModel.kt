@@ -14,8 +14,8 @@ class DishViewModel: BaseViewModel() {
     @Inject
     lateinit var api: Api
 
-    private val _dishesData = MutableLiveData<List<Dish>>()
-    val dishesData: LiveData<List<Dish>> = _dishesData
+    private val _dishesData = MutableLiveData<List<com.example.core_entities.Dish>>()
+    val dishesData: LiveData<List<com.example.core_entities.Dish>> = _dishesData
 
     val tabNames = listOf("Все меню", "Салаты", "С рисом", "С рыбой")
     val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))

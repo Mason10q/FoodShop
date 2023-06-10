@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.feature_shop'
+    namespace 'com.example.core_db'
     compileSdk 33
 
     defaultConfig {
@@ -29,16 +29,9 @@ android {
     kotlinOptions {
         jvmTarget = '17'
     }
-
-    viewBinding{
-        enabled = true
-    }
 }
 
 dependencies {
-    implementation project(":core-android")
-    implementation project(":core-network")
-    implementation project(":core-navigation")
     implementation project(":core-entities")
 
     implementation 'androidx.core:core-ktx:1.8.0'
@@ -48,36 +41,20 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    //viewModels
-    implementation 'androidx.fragment:fragment-ktx:1.5.7'
+    //room
+    def room_version = "2.5.1"
 
-    //CircleImage
-    implementation 'de.hdodenhof:circleimageview:3.1.0'
-
-    //Picasso
-    implementation 'com.squareup.picasso:picasso:2.8'
-
-    //dagger
-    def dagger_v = "2.13"
-    implementation "com.google.dagger:dagger:$dagger_v"
-    kapt "com.google.dagger:dagger-compiler:$dagger_v"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
 
     //rxJava
     implementation "io.reactivex.rxjava3:rxjava:3.1.6"
     implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
 
-    //gson
-    implementation 'com.google.code.gson:gson:2.10.1'
-
-    //retrofit
-    def retro_v = "2.9.0"
-    implementation "com.squareup.retrofit2:retrofit:$retro_v"
-    implementation "com.squareup.retrofit2:converter-gson:$retro_v"
-    implementation "com.squareup.retrofit2:adapter-rxjava3:$retro_v"
-
-    //navigationComponent
-    def nav_version = "2.6.0"
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
+    //dagger
+    def dagger_v = "2.13"
+    implementation "com.google.dagger:dagger:$dagger_v"
+    kapt "com.google.dagger:dagger-compiler:$dagger_v"
 }
