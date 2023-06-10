@@ -6,14 +6,14 @@ import com.example.feature_shop.databinding.ItemCategoryBinding
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
-class CategoryAdapter:
-    BaseAdapter<Category, ItemCategoryBinding>(ItemCategoryBinding::inflate) {
+class CategoryAdapter @Inject constructor(
+    private val picasso: Picasso
+) : BaseAdapter<Category, ItemCategoryBinding>(ItemCategoryBinding::inflate) {
 
-    @Inject lateinit var picasso: Picasso
 
-    private var onCategoryClick = { _: View, _: Category ->}
+    private var onCategoryClick = { _: View, _: Category -> }
 
-    fun setOnCategoryClickListener(listener: (view: View, item: Category) -> Unit){
+    fun setOnCategoryClickListener(listener: (view: View, item: Category) -> Unit) {
         onCategoryClick = listener
     }
 

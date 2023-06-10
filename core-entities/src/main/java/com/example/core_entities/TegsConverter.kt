@@ -5,16 +5,15 @@ import java.util.stream.Collectors
 
 
 
-
-internal class TegsConverter {
+class TegsConverter {
 
     @TypeConverter
-    fun fromHobbies(hobbies: List<String?>): String? {
-        return hobbies.stream().collect(Collectors.joining(","))
+    fun fromTegs(tegs: List<String?>): String {
+        return tegs.stream().collect(Collectors.joining(","))
     }
 
     @TypeConverter
-    fun toHobbies(data: String): List<String> {
+    fun toTegs(data: String): List<String> {
         return listOf(*data.split(",".toRegex()).dropLastWhile { it.isEmpty() }
             .toTypedArray())
     }

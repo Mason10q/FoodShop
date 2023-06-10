@@ -39,6 +39,7 @@ dependencies {
     implementation project(":core-android")
     implementation project(":core-entities")
     implementation project(":core-db")
+    implementation project(":core-navigation")
 
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,5 +58,23 @@ dependencies {
     def dagger_v = "2.13"
     implementation "com.google.dagger:dagger:$dagger_v"
     kapt "com.google.dagger:dagger-compiler:$dagger_v"
+
+    //rxJava
+    implementation "io.reactivex.rxjava3:rxjava:3.1.6"
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+
+    //room
+    def room_version = "2.5.1"
+
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    implementation "androidx.room:room-rxjava3:$room_version"
+
+
+    //navigationComponent
+    def nav_version = "2.6.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
 }

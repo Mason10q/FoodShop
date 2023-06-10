@@ -3,23 +3,26 @@ package com.example.feature_shop.dish
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.abstracttesting.adapter.BaseAdapter
+import com.example.core_entities.Dish
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.ItemDishesBinding
+import javax.inject.Inject
 
 
-class DishPagerAdapter: BaseAdapter<DishPagerItem, ItemDishesBinding>(ItemDishesBinding::inflate) {
+class DishPagerAdapter @Inject constructor(
+    private val adapter: DishesAdapter
+): BaseAdapter<DishPagerItem, ItemDishesBinding>(ItemDishesBinding::inflate) {
 
-    private var onDishClicked = { _: View, _: com.example.core_entities.Dish ->}
+    private var onDishClicked = { _: View, _: Dish ->}
 
-    fun setOnDishClick(l: (view: View, item: com.example.core_entities.Dish) -> Unit){
+    fun setOnDishClick(l: (view: View, item: Dish) -> Unit){
         onDishClicked = l
     }
 
     override fun bindViews(binding: ItemDishesBinding, item: DishPagerItem, position: Int) {
         binding.root.layoutManager = GridLayoutManager(binding.root.context, 3)
 
-        binding.root.adapter = DishesAdapter().apply {
-            ShopComponent.init(binding.root.context).inject(this)
+        binding.root.adapter = adapter.apply {
             addItems(item.items)
             setOnDishClick(onDishClicked)
         }

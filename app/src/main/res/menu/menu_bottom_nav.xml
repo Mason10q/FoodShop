@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
+        android:id="@+id/nav_shop"
         android:title="Главная"
         android:icon="@drawable/home"/>
 
@@ -12,7 +12,7 @@
         android:icon="@drawable/search_normal"/>
 
     <item
-        android:id="@+id/bag"
+        android:id="@+id/nav_basket"
         android:title="Корзина"
         android:icon="@drawable/bag"/>
 

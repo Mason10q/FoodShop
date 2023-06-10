@@ -21,8 +21,8 @@ data class Dish(
     val description: String = "",
     @ColumnInfo("imageUrl")
     val imageUrl: String = "",
-    @ColumnInfo("tegs")
     @TypeConverters(TegsConverter::class)
+    @ColumnInfo("tegs")
     val tegs: List<String> = listOf(),
     @ColumnInfo("amount")
     val amount: Int = 0

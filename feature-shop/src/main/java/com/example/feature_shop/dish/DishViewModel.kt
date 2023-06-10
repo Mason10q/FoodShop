@@ -4,6 +4,8 @@ import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.core_android.BaseViewModel
+import com.example.core_db.BasketRepo
+import com.example.core_entities.Dish
 import com.example.core_network.Api
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -11,11 +13,10 @@ import javax.inject.Inject
 
 class DishViewModel: BaseViewModel() {
 
-    @Inject
-    lateinit var api: Api
+    @Inject lateinit var api: Api
 
-    private val _dishesData = MutableLiveData<List<com.example.core_entities.Dish>>()
-    val dishesData: LiveData<List<com.example.core_entities.Dish>> = _dishesData
+    private val _dishesData = MutableLiveData<List<Dish>>()
+    val dishesData: LiveData<List<Dish>> = _dishesData
 
     val tabNames = listOf("Все меню", "Салаты", "С рисом", "С рыбой")
     val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))

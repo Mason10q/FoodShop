@@ -23,4 +23,22 @@ class BasketRepo(private val dao: BasketDao) {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 
+    fun deleteDishFromBasket(id: Int) = dao.deleteFromBasket(id)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+
+
+    fun getFromBasketByName(name: String) = dao.getByDishByName(name)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+
+    fun checkIfInBasket(name: String) = dao.checkIfDishInBasket(name)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+
+    fun getAmountOfDishFromBasket(id: Int) = dao.getAmount(id)
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+
+
 }
