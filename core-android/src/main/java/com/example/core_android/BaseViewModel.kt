@@ -12,7 +12,7 @@ open class BaseViewModel: ViewModel() {
 
     protected val composite = CompositeDisposable()
 
-    fun onStop(){
+    open fun onStop(){
         composite.dispose()
     }
 

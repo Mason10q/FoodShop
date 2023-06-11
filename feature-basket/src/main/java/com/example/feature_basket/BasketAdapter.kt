@@ -6,9 +6,9 @@ import com.example.feature_basket.databinding.ItemBasketBinding
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
 
-class BasketAdapter: BaseAdapter<Dish, ItemBasketBinding>(ItemBasketBinding::inflate) {
-
-    @Inject lateinit var picasso: Picasso
+class BasketAdapter @Inject constructor(
+    private val picasso: Picasso
+): BaseAdapter<Dish, ItemBasketBinding>(ItemBasketBinding::inflate) {
 
     override fun bindViews(binding: ItemBasketBinding, item: Dish, position: Int) {
         with(binding) {

@@ -24,10 +24,7 @@ class DialogViewModel : BaseViewModel() {
         repository.checkIfInBasket(name)
             .subscribe({
                 _checkData.postValue(it)
-                Log.d("dialogError", "viewModel response $it")
-            }, {
-                Log.e("dialogError", "viewModel", it)
-            })
+            }, {})
     )
 
 }

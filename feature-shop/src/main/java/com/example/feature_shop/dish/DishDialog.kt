@@ -39,8 +39,6 @@ class DishDialog : DialogFragment() {
 
         val dish = arguments.let { it?.getSerializable(DISH_KEY) as Dish }
         viewModel.checkIfInBasket(dish.name)
-        Log.d("dialogError", dish.name)
-
 
         with(binding) {
 
@@ -54,7 +52,6 @@ class DishDialog : DialogFragment() {
 
             addToBasketBtn.setOnClickListener {
                 viewModel.addToBasket(dish)
-                Log.d("dialogError", "added")
                 dismiss()
             }
             dialogDismissBtn.setOnClickListener { dismiss() }

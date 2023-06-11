@@ -15,7 +15,8 @@ class BasketDataBaseModule(private val context: Context) {
         context.applicationContext,
         BasketDataBase::class.java,
         "basket_database"
-    ).build()
+    ).fallbackToDestructiveMigration()
+        .build()
 
     @Provides
     fun provideDao(dataBase: BasketDataBase) = dataBase.getBasketDao()

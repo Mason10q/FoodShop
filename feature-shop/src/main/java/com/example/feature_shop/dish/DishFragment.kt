@@ -29,6 +29,9 @@ class DishFragment : Fragment() {
     ): View {
         val binding = FragmentDishBinding.inflate(inflater)
 
+        val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))
+        val colors = intArrayOf(Color.WHITE, Color.BLACK)
+
         with(ShopComponent.init(requireActivity())) {
             inject(viewModel)
             inject(this@DishFragment)

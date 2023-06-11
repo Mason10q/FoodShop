@@ -17,6 +17,6 @@ class ShopModule {
     fun provideDishesAdapter(picasso: Picasso) = DishesAdapter(picasso)
 
     @Provides
-    fun provideDishPagerAdapter(adapter: DishesAdapter) = DishPagerAdapter(adapter)
+    fun provideDishPagerAdapter(picasso: Picasso) = DishPagerAdapter(picasso)
 
 }
