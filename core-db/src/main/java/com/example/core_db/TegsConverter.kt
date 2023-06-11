@@ -1,4 +1,4 @@
-package com.example.core_entities
+package com.example.core_db
 
 import androidx.room.TypeConverter
 import java.util.stream.Collectors

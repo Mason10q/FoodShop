@@ -3,8 +3,6 @@ package com.example.feature_shop.dish
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.abstracttesting.adapter.BaseAdapter
-import com.example.core_entities.Dish
-import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.ItemDishesBinding
 import javax.inject.Inject
 

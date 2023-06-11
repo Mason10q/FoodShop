@@ -39,7 +39,6 @@ dependencies {
     implementation project(":core-android")
     implementation project(":core-network")
     implementation project(":core-navigation")
-    implementation project(":core-entities")
     implementation project(":core-db")
 
     implementation 'androidx.core:core-ktx:1.8.0'

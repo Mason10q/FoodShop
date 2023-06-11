@@ -8,13 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.os.bundleOf
-import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
-import com.example.core_entities.Dish
-import com.example.feature_shop.DISH_DIALOG_RESULT
 import com.example.feature_shop.DISH_DIALOG_TAG
-import com.example.feature_shop.DISH_IN_BD_KEY
 import com.example.feature_shop.DISH_KEY
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.FragmentDishBinding

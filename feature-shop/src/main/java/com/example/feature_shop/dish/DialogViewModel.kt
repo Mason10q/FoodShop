@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.core_android.BaseViewModel
 import com.example.core_db.BasketRepo
-import com.example.core_entities.Dish
 import javax.inject.Inject
 
 class DialogViewModel : BaseViewModel() {
@@ -17,7 +16,7 @@ class DialogViewModel : BaseViewModel() {
     val checkData: LiveData<Boolean> = _checkData
 
     fun addToBasket(dish: Dish) = composite.add(
-        repository.addDishToBasket(dish)
+        repository.addDishToBasket(DishMapper.mapDishEntityToTable(dish))
             .subscribe()
     )
 

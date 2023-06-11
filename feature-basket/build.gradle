@@ -37,7 +37,6 @@ android {
 
 dependencies {
     implementation project(":core-android")
-    implementation project(":core-entities")
     implementation project(":core-db")
     implementation project(":core-navigation")
 

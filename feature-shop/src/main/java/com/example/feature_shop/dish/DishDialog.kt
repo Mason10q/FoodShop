@@ -4,17 +4,8 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
-import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.navigation.NavBackStackEntry
-import androidx.navigation.fragment.findNavController
-import com.example.core_entities.Dish
-import com.example.feature_shop.DISH_DIALOG_RESULT
-import com.example.feature_shop.DISH_DIALOG_TAG
-import com.example.feature_shop.DISH_IN_BD_KEY
 import com.example.feature_shop.DISH_KEY
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.DialogDishBinding

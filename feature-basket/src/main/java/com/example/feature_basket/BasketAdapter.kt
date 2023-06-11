@@ -2,7 +2,6 @@ package com.example.feature_basket
 
 import android.view.View
 import com.example.abstracttesting.adapter.BaseAdapter
-import com.example.core_entities.Dish
 import com.example.feature_basket.databinding.ItemBasketBinding
 import com.squareup.picasso.Picasso
 import javax.inject.Inject
