@@ -45,23 +45,29 @@
     <LinearLayout
         android:layout_width="100dp"
         android:layout_height="32dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginLeft="90dp">
 
-        <Button
+        <ImageButton
+            android:id="@+id/decrease_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:src="@drawable/ic_minus"/>
 
         <TextView
+            android:id="@+id/amount_counter"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
 
-        <Button
+        <ImageButton
+            android:id="@+id/increase_btn"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:src="@drawable/ic_plus"/>
 
 
     </LinearLayout>

@@ -17,13 +17,36 @@ class BasketViewModel : BaseViewModel() {
     private val _basketData = SingleLiveEvent<List<Dish>>()
     val basketData: LiveData<List<Dish>> = _basketData
 
+    private val _amountChangedData = MutableLiveData<Unit>()
+    val amountChangedData: LiveData<Unit> = _amountChangedData
 
     fun getAllBasket() = composite.add(
         repository.getAllDishesFromBasket()
             .map { DishMapper.mapListFromTableToEntity(it) }
             .subscribe({
-                Log.d("basket", "request")
                 _basketData.postValue(it)
+                _amountChangedData.postValue(Unit)
+            }, {})
+    )
+
+    fun increaseAmount(dishId: Int) = composite.add(
+        repository.increaseAmountOfDish(dishId)
+            .subscribe({
+                _amountChangedData.postValue(Unit)
+            }, {})
+    )
+
+    fun decreaseAmount(dishId: Int) = composite.add(
+        repository.decreaseAmountOfDish(dishId)
+            .subscribe({
+                _amountChangedData.postValue(Unit)
+            }, {})
+    )
+
+    fun deleteFromTable(dishId: Int) = composite.add(
+        repository.deleteDishFromBasket(dishId)
+            .subscribe({
+                _amountChangedData.postValue(Unit)
             }, {})
     )
 

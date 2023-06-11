@@ -48,7 +48,8 @@ object DishMapper {
                 weight = weight,
                 description = description,
                 imageUrl = imageUrl,
-                tegs = tegs
+                tegs = tegs,
+                amount = 1
             )
         }
     }

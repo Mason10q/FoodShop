@@ -6,7 +6,7 @@ object DishMapper {
 
     private fun mapFromTableToEntity(dishTable: DishTable): Dish {
         with(dishTable) {
-            return Dish(name, price, weight, description, imageUrl, tegs)
+            return Dish(id, name, price, weight, description, imageUrl, tegs, amount)
         }
     }
 

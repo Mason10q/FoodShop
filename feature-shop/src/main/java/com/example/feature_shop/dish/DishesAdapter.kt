@@ -1,7 +1,7 @@
 package com.example.feature_shop.dish
 
 import android.view.View
-import com.example.abstracttesting.adapter.BaseAdapter
+import com.example.core_android.BaseAdapter
 import com.example.feature_shop.databinding.ItemDishBinding
 import com.squareup.picasso.Picasso
 import javax.inject.Inject

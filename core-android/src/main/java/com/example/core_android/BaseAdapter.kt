@@ -1,18 +1,16 @@
-package com.example.abstracttesting.adapter
+package com.example.core_android
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import com.example.core_android.AdapterCallback
 
 abstract class BaseAdapter<DATA : Any, B : ViewBinding> (
     private val inflater: (LayoutInflater, ViewGroup, Boolean) -> B
 ) : RecyclerView.Adapter<BaseAdapter.ViewHolder<DATA, B>>(), AdapterCallback<DATA, B>{
 
-    private val items = mutableListOf<DATA>()
+    protected val items = mutableListOf<DATA>()
 
 
     @SuppressLint("NotifyDataSetChanged")
@@ -30,6 +28,11 @@ abstract class BaseAdapter<DATA : Any, B : ViewBinding> (
     fun addItems(items: List<DATA>) {
         this.items.addAll(items)
         notifyDataSetChanged()//TODO: Выбрать более оптимизированный метод
+    }
+
+    fun removeItem(item: DATA, position: Int){
+        this.items.remove(item)
+        notifyItemRemoved(position)
     }
 
     @SuppressLint("NotifyDataSetChanged")

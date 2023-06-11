@@ -18,11 +18,11 @@ interface BasketDao {
     @Query("select * from DishTable")
     fun getAllFromBasket(): Maybe<List<DishTable>>
 
-    @Query("update DishTable set amount=amount+1")
-    fun increaseAmount(): Completable
+    @Query("update DishTable set amount=amount+1 where id=:id")
+    fun increaseAmount(id: Int): Completable
 
-    @Query("update DishTable set amount=amount-1")
-    fun decreaseAmount(): Completable
+    @Query("update DishTable set amount=amount-1 where id=:id")
+    fun decreaseAmount(id: Int): Completable
 
     @Query("delete from DishTable where id = :id")
     fun deleteFromBasket(id: Int): Completable

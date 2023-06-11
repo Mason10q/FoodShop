@@ -13,12 +13,12 @@ class BasketRepo(private val dao: BasketDao) {
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 
-    fun increaseAmountOfDish() = dao.increaseAmount()
+    fun increaseAmountOfDish(id: Int) = dao.increaseAmount(id)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 
 
-    fun decreaseAmountOfDish() = dao.decreaseAmount()
+    fun decreaseAmountOfDish(id: Int) = dao.decreaseAmount(id)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
 

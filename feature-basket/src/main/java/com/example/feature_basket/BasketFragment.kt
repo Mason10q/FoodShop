@@ -15,13 +15,11 @@ class BasketFragment: Fragment(){
     private val viewModel: BasketViewModel by viewModels()
     @Inject lateinit var adapter: BasketAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        Log.d("basket", "onCreateView")
         val binding = FragmentBasketBinding.inflate(inflater)
 
         with(BasketComponent.init(requireActivity())){
@@ -29,16 +27,24 @@ class BasketFragment: Fragment(){
             inject(this@BasketFragment)
         }
 
+        adapter.setDishAmountCallback(object: DishAmountController{
+            override fun increase(id: Int) { viewModel.increaseAmount(id) }
+            override fun decrease(id: Int) { viewModel.decreaseAmount(id) }
+            override fun delete(id: Int) { viewModel.deleteFromTable(id) }
+        })
+
         viewModel.getAllBasket()
 
         binding.basketRecycler.adapter = adapter
+        binding.payBtn.text = resources.getString(R.string.pay, 1)
 
         viewModel.basketData.observe(viewLifecycleOwner){
-            Log.d("basket", "observer")
             adapter.addItems(it)
         }
 
-        binding.payBtn.setOnClickListener { viewModel.getAllBasket() }
+        viewModel.amountChangedData.observe(viewLifecycleOwner){
+            binding.payBtn.text = resources.getString(R.string.pay, adapter.countFullPrice())
+        }
 
         return binding.root
     }
