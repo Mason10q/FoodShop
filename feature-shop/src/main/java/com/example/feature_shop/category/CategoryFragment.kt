@@ -15,8 +15,8 @@ import javax.inject.Inject
 
 class CategoryFragment: Fragment(){
 
+    private val binding by lazy { FragmentCategoryBinding.inflate(layoutInflater) }
     private val viewModel: CategoryViewModel by viewModels()
-
     @Inject lateinit var adapter: CategoryAdapter
 
     override fun onCreateView(
@@ -24,17 +24,28 @@ class CategoryFragment: Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentCategoryBinding.inflate(layoutInflater)
 
         with(ShopComponent.init(requireActivity())) {
             inject(viewModel)
             inject(this@CategoryFragment)
         }
 
-        binding.categoryList.adapter = adapter
-
+        prepareAdapter()
+        createObservers()
         viewModel.getCategories()
 
+        return binding.root
+    }
+
+    private fun prepareAdapter(){
+        binding.categoryList.adapter = adapter
+
+        adapter.setOnCategoryClickListener { _, _ ->
+            findNavController().navigate(com.example.core_navigation.R.id.dishFragment)
+        }
+    }
+
+    private fun createObservers(){
         viewModel.error.observe(viewLifecycleOwner){
             Toast.makeText(requireActivity(), it, Toast.LENGTH_LONG).show()
         }
@@ -42,12 +53,6 @@ class CategoryFragment: Fragment(){
         viewModel.categoriesData.observe(viewLifecycleOwner){
             adapter.addItems(it)
         }
-
-        adapter.setOnCategoryClickListener { _, _ ->
-            findNavController().navigate(com.example.core_navigation.R.id.dishFragment)
-        }
-
-        return binding.root
     }
 
 

@@ -28,8 +28,8 @@ class BasketAdapter @Inject constructor(
 
             increaseBtn.setOnClickListener{
                 controller.increase(item.id)
-                item.amount++
-                notifyItemChanged(position)
+                ++item.amount
+                amountCounter.text = item.amount.toString()
             }
 
             decreaseBtn.setOnClickListener{

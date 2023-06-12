@@ -19,6 +19,8 @@ import javax.inject.Inject
 
 class DishFragment : Fragment() {
 
+    private val binding by lazy { FragmentDishBinding.inflate(layoutInflater) }
+
     private val viewModel: DishViewModel by viewModels()
     @Inject lateinit var adapter: DishPagerAdapter
 
@@ -27,28 +29,12 @@ class DishFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentDishBinding.inflate(inflater)
-
-        val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))
-        val colors = intArrayOf(Color.WHITE, Color.BLACK)
-
         with(ShopComponent.init(requireActivity())) {
             inject(viewModel)
             inject(this@DishFragment)
         }
 
-        binding.dishPager.adapter = adapter
-
-        TabLayoutMediator(binding.dishTabs, binding.dishPager) { tab, pos ->
-            val tabBinding = TabCustomBinding.inflate(inflater)
-            tab.customView = tabBinding.root
-
-            with(viewModel) {
-                tabBinding.root.setTextColor(ColorStateList(states, colors))
-                tabBinding.root.text = tabNames[pos]
-            }
-        }.attach()
-
+        prepareAdapter()
 
         viewModel.getDishes()
 
@@ -58,13 +44,35 @@ class DishFragment : Fragment() {
             }
         }
 
+        return binding.root
+    }
+
+
+    private fun prepareAdapter(){
+        binding.dishPager.adapter = adapter
+
         adapter.setOnDishClick { _, item ->
             val dialog = DishDialog()
             dialog.arguments = Bundle().apply { putSerializable(DISH_KEY, item) }
             dialog.show(childFragmentManager, DISH_DIALOG_TAG)
         }
 
-        return binding.root
+        attacheMediator()
+    }
+
+    private fun attacheMediator(){
+        val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))
+        val colors = intArrayOf(Color.WHITE, Color.BLACK)
+
+        TabLayoutMediator(binding.dishTabs, binding.dishPager) { tab, pos ->
+            val tabBinding = TabCustomBinding.inflate(layoutInflater)
+            tab.customView = tabBinding.root
+
+            with(viewModel) {
+                tabBinding.root.setTextColor(ColorStateList(states, colors))
+                tabBinding.root.text = tabNames[pos]
+            }
+        }.attach()
     }
 
     override fun onStop() {
