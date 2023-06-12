@@ -1,5 +1,7 @@
 <resources>
 
     <string name="pay">Оплатить %1$d ₽</string>
+    <string name="empry_basket">Корзина пуста</string>
+    <string name="to_shop">В магазин</string>
 
 </resources>

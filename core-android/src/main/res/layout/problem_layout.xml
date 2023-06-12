@@ -3,47 +3,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_marginHorizontal="60dp"
-    android:layout_marginTop="70dp">
+    android:gravity="center"
+    android:layout_marginHorizontal="60dp">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/notify_swiper"
+
+    <ImageView
+        android:id="@+id/notify_image"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="250dp"
+        android:src="@color/cardview_dark_background"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <TextView
+        android:id="@+id/notify_text"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_marginVertical="20dp"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:text="Уведомление"/>
 
-                <ImageView
-                    android:id="@+id/notify_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:src="@color/cardview_dark_background"/>
+    <Button
+        android:id="@+id/notify_button"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginVertical="30dp"
+        android:background="@color/cardview_dark_background"
+        android:textColor="#FFFFFF"
+        android:text="Что можно сделать"/>
 
-                <TextView
-                    android:id="@+id/notify_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginVertical="20dp"
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:text="Уведомление"/>
 
-                <Button
-                    android:id="@+id/notify_button"
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:layout_gravity="center"
-                    android:layout_marginVertical="30dp"
-                    android:background="@color/cardview_dark_background"
-                    android:textColor="#FFFFFF"
-                    android:text="Что можно сделать"/>
-
-        </LinearLayout>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>
