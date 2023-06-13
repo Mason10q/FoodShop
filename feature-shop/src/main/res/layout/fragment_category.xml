@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".category.CategoryFragment">
 
-    <include layout="@layout/toolbar_main"/>
+    <include layout="@layout/toolbar_main" android:id="@+id/toolbar"/>
 
     <FrameLayout
         android:id="@+id/container"

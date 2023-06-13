@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.example.feature_shop.CATEGORY_NAME_KEY
 import com.example.feature_shop.DISH_DIALOG_TAG
 import com.example.feature_shop.DISH_KEY
 import com.example.feature_shop.ShopComponent
@@ -35,7 +37,7 @@ class DishFragment : Fragment() {
         }
 
         prepareAdapter()
-
+        prepareToolbar()
         viewModel.getDishes()
 
         viewModel.dishesData.observe(viewLifecycleOwner) {
@@ -73,6 +75,11 @@ class DishFragment : Fragment() {
                 tabBinding.root.text = tabNames[pos]
             }
         }.attach()
+    }
+
+    private fun prepareToolbar(){
+        binding.toolbar.backBtn.setOnClickListener{ findNavController().navigateUp() }
+        binding.toolbar.categoryName.text = arguments?.getString(CATEGORY_NAME_KEY)
     }
 
     override fun onStop() {

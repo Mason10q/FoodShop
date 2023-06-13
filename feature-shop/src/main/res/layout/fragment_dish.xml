@@ -8,6 +8,8 @@
     tools:context=".dish.DishFragment">
 
 
+    <include layout="@layout/toolbar_dish" android:id="@+id/toolbar"/>
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/dish_tabs"
         android:layout_width="match_parent"

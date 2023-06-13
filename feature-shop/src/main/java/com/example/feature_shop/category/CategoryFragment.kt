@@ -1,6 +1,5 @@
 package com.example.feature_shop.category
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -8,22 +7,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.core_android.R
+import com.example.core_android.UserData
+import com.example.core_android.UserDataProvider
 import com.example.core_android.createRecyclerView
 import com.example.core_android.overplaceEmptyList
+import com.example.feature_shop.CATEGORY_NAME_KEY
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.FragmentCategoryBinding
 import javax.inject.Inject
 
-class CategoryFragment: Fragment(){
+class CategoryFragment : Fragment() {
 
     private val binding by lazy { FragmentCategoryBinding.inflate(layoutInflater) }
     private val viewModel: CategoryViewModel by viewModels()
-    @Inject lateinit var adapter: CategoryAdapter
+    @Inject
+    lateinit var adapter: CategoryAdapter
 
     private var isProblemLayout = false
 
@@ -38,35 +40,49 @@ class CategoryFragment: Fragment(){
             inject(this@CategoryFragment)
         }
 
+        val userDataProvider = UserDataProvider(requireContext())
+
         prepareAdapter()
+        prepareToolbar(userDataProvider.getUserData())
         createObservers()
         viewModel.getCategories()
 
         return binding.root
     }
 
-    private fun prepareAdapter(){
+    private fun prepareAdapter() {
         binding.categoryList.adapter = adapter
 
-        adapter.setOnCategoryClickListener { _, _ ->
-            findNavController().navigate(com.example.core_navigation.R.id.dishFragment)
+        adapter.setOnCategoryClickListener { _, item ->
+            findNavController().navigate(
+                com.example.core_navigation.R.id.dishFragment,
+                Bundle().apply {
+                    putString(
+                        CATEGORY_NAME_KEY, item.name
+                    )
+                })
         }
     }
 
-    private fun createObservers(){
-        viewModel.error.observe(viewLifecycleOwner){
+    private fun prepareToolbar(userData: UserData){
+        binding.toolbar.city.text = userData.city
+        binding.toolbar.date.text = userData.date
+    }
+
+    private fun createObservers() {
+        viewModel.error.observe(viewLifecycleOwner) {
             setProblemView()
         }
 
-        viewModel.categoriesData.observe(viewLifecycleOwner){
-            if(isProblemLayout){
+        viewModel.categoriesData.observe(viewLifecycleOwner) {
+            if (isProblemLayout) {
                 setRecycler()
             }
             adapter.addItems(it)
         }
     }
 
-    private fun setProblemView(){
+    private fun setProblemView() {
         isProblemLayout = true
         binding.container.removeAllViews()
         binding.container.addView(overplaceEmptyList(
@@ -77,7 +93,7 @@ class CategoryFragment: Fragment(){
         ) { startActivity(Intent(Settings.ACTION_WIRELESS_SETTINGS)) })
     }
 
-    private fun setRecycler(){
+    private fun setRecycler() {
         isProblemLayout = false
         with(binding.container) {
             removeAllViews()
