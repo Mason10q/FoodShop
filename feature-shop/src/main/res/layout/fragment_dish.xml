@@ -10,16 +10,27 @@
 
     <include layout="@layout/toolbar_dish" android:id="@+id/toolbar"/>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/dish_tabs"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/dish_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:tabIndicatorHeight="0dp"
+            app:tabRippleColor="@null"
+            app:tabMode="scrollable"/>
 
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/dish_pager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/dish_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_margin="16dp"/>
 
+    </LinearLayout>
 
 </LinearLayout>

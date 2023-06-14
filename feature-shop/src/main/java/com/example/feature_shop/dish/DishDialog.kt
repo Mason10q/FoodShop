@@ -2,11 +2,15 @@ package com.example.feature_shop.dish
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.viewModels
 import com.example.feature_shop.DISH_KEY
+import com.example.feature_shop.R
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.DialogDishBinding
 import com.squareup.picasso.Picasso
@@ -24,7 +28,6 @@ class DishDialog : DialogFragment() {
             inject(this@DishDialog)
         }
 
-
         val builder = AlertDialog.Builder(requireActivity())
         val binding = DialogDishBinding.inflate(layoutInflater)
         builder.setView(binding.root)
@@ -41,13 +44,12 @@ class DishDialog : DialogFragment() {
         viewModel.checkIfInBasket(dish.name)
 
         with(binding) {
-
             if (dish.imageUrl.isNotEmpty()) {
                 picasso.load(dish.imageUrl).into(dialogDishImage)
             }
             dialogDishName.text = dish.name
-            dialogDishPrice.text = dish.price.toString()
-            dialogDishWeight.text = dish.weight.toString()
+            dialogDishPrice.text = resources.getString(R.string.price, dish.price)
+            dialogDishWeight.text = resources.getString(R.string.weight, dish.weight)
             dialogDishDescription.text = dish.description
 
             addToBasketBtn.setOnClickListener {
@@ -57,7 +59,7 @@ class DishDialog : DialogFragment() {
             dialogDismissBtn.setOnClickListener { dismiss() }
         }
 
-        return builder.create()
+        return builder.create().apply { window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) }
     }
 
     override fun onStop() {

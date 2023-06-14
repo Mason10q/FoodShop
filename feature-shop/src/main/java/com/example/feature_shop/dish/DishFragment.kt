@@ -1,7 +1,5 @@
 package com.example.feature_shop.dish
 
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,8 +12,8 @@ import com.example.feature_shop.CATEGORY_NAME_KEY
 import com.example.feature_shop.DISH_DIALOG_TAG
 import com.example.feature_shop.DISH_KEY
 import com.example.feature_shop.ShopComponent
+import com.example.feature_shop.databinding.CustomTabBinding
 import com.example.feature_shop.databinding.FragmentDishBinding
-import com.example.feature_shop.databinding.TabCustomBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import javax.inject.Inject
 
@@ -63,17 +61,11 @@ class DishFragment : Fragment() {
     }
 
     private fun attacheMediator(){
-        val states = arrayOf(intArrayOf(android.R.attr.state_selected), intArrayOf(-android.R.attr.state_selected))
-        val colors = intArrayOf(Color.WHITE, Color.BLACK)
 
         TabLayoutMediator(binding.dishTabs, binding.dishPager) { tab, pos ->
-            val tabBinding = TabCustomBinding.inflate(layoutInflater)
-            tab.customView = tabBinding.root
-
-            with(viewModel) {
-                tabBinding.root.setTextColor(ColorStateList(states, colors))
-                tabBinding.root.text = tabNames[pos]
-            }
+            val tabBinding = CustomTabBinding.inflate(layoutInflater).customTab
+            tabBinding.text = viewModel.tabNames[pos]
+            tab.customView = tabBinding
         }.attach()
     }
 

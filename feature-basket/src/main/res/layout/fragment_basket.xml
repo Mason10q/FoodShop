@@ -28,6 +28,10 @@
         android:id="@+id/pay_btn"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:text="@string/pay" />
+        android:text="@string/pay"
+        android:layout_margin="16dp"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:background="@drawable/background_blue_btn"/>
 
 </LinearLayout>

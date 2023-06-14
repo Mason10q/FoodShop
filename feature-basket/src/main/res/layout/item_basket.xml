@@ -1,35 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="62dp">
+    android:layout_height="62dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp">
 
     <ImageView
         android:id="@+id/dish_image"
         android:layout_width="62dp"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/background_image_dish"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:orientation="vertical">
 
 
         <TextView
             android:id="@+id/dish_name"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Название блюда"/>
+            android:layout_height="wrap_content"
+            android:singleLine="false"
+            android:text="Название блюда"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_marginTop="4dp">
 
             <TextView
                 android:id="@+id/dish_price"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textColor="@color/black"
                 android:text="360р"/>
 
 
@@ -42,34 +51,46 @@
         </LinearLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="32dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="90dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <ImageButton
-            android:id="@+id/decrease_btn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_minus"/>
+        <LinearLayout
+            android:layout_width="100dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center|end"
+            android:background="@drawable/background_min_plus">
 
-        <TextView
-            android:id="@+id/amount_counter"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            <ImageButton
+                android:id="@+id/decrease_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_minus"/>
+
+            <TextView
+                android:id="@+id/amount_counter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:layout_weight="1" />
 
 
-        <ImageButton
-            android:id="@+id/increase_btn"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/ic_plus"/>
+            <ImageButton
+                android:id="@+id/increase_btn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@null"
+                android:src="@drawable/ic_plus"/>
 
 
-    </LinearLayout>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -1,5 +1,7 @@
 package com.example.feature_basket
 
+import android.content.Context
+import android.content.res.Resources
 import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -22,8 +24,8 @@ class BasketAdapter @Inject constructor(
         with(binding) {
             picasso.load(item.imageUrl).into(dishImage)
             dishName.text = item.name
-            dishPrice.text = item.price.toString()
-            dishWeight.text = item.weight.toString()
+            dishPrice.text = binding.root.resources.getString(R.string.price, item.price)
+            dishWeight.text = binding.root.resources.getString(R.string.weight, item.weight)
             amountCounter.text = item.amount.toString()
 
             increaseBtn.setOnClickListener{

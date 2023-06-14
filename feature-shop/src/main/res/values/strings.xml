@@ -3,4 +3,6 @@
     <string name="no_internet">Подключение к интернету отсутсвует</string>
     <string name="to_settings">В настройки сети</string>
 
+    <string name="price">%1$d ₽</string>
+    <string name="weight">&#160;· %1$dг</string>
 </resources>

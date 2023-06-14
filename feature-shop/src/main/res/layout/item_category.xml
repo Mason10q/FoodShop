@@ -2,7 +2,7 @@
 <com.example.core_android.CustomCardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="148dp"
-    android:layout_margin="10dp"
+    android:layout_margin="8dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
@@ -14,7 +14,9 @@
         android:layout_height="50dp"
         android:layout_marginLeft="12dp"
         android:layout_marginTop="16dp"
-        android:text="Название категории"/>
+        android:text="Название категории"
+        android:textColor="@color/black"
+        android:textSize="20sp"/>
 
 
 
