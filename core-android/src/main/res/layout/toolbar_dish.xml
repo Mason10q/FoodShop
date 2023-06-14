@@ -20,6 +20,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:text="Категория"
+        android:fontFamily="More fonts"
         style="@style/toolbar_big_text"
         android:layout_gravity="center"
         android:gravity="center"/>

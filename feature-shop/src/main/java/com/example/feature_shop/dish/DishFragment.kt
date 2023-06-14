@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.feature_shop.CATEGORY_NAME_KEY
 import com.example.feature_shop.DISH_DIALOG_TAG
 import com.example.feature_shop.DISH_KEY
+import com.example.feature_shop.R
 import com.example.feature_shop.ShopComponent
 import com.example.feature_shop.databinding.CustomTabBinding
 import com.example.feature_shop.databinding.FragmentDishBinding
@@ -70,7 +71,7 @@ class DishFragment : Fragment() {
     }
 
     private fun prepareToolbar(){
-        binding.toolbar.backBtn.setOnClickListener{ findNavController().navigateUp() }
+        binding.toolbar.backBtn.setOnClickListener{ findNavController().navigate(com.example.core_navigation.R.id.categoryFragment) }
         binding.toolbar.categoryName.text = arguments?.getString(CATEGORY_NAME_KEY)
     }
 

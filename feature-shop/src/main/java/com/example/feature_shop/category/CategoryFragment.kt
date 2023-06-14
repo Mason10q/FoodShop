@@ -1,12 +1,15 @@
 package com.example.feature_shop.category
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,15 +42,42 @@ class CategoryFragment : Fragment() {
             inject(viewModel)
             inject(this@CategoryFragment)
         }
-
-        val userDataProvider = UserDataProvider(requireContext())
-
+        requestPermissions()
         prepareAdapter()
-        prepareToolbar(userDataProvider.getUserData())
         createObservers()
         viewModel.getCategories()
 
         return binding.root
+    }
+
+
+    private fun requestPermissions(){
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            val permissions = arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            )
+            requestPermissions(permissions, 0)
+        } else{
+            prepareToolbar()
+        }
+
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        prepareToolbar()
     }
 
     private fun prepareAdapter() {
@@ -64,9 +94,10 @@ class CategoryFragment : Fragment() {
         }
     }
 
-    private fun prepareToolbar(userData: UserData){
-        binding.toolbar.city.text = userData.city
-        binding.toolbar.date.text = userData.date
+    private fun prepareToolbar(){
+        val userDataProvider = UserDataProvider(requireContext())
+        binding.toolbar.city.text = userDataProvider.getUserData().city
+        binding.toolbar.date.text = userDataProvider.getUserData().date
     }
 
     private fun createObservers() {

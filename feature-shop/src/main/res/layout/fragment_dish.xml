@@ -21,6 +21,7 @@
             android:layout_height="35dp"
             app:tabIndicatorHeight="0dp"
             app:tabRippleColor="@null"
+            app:tabUnboundedRipple="false"
             app:tabMode="scrollable"/>
 
 
@@ -28,8 +29,7 @@
             android:id="@+id/dish_pager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:layout_margin="16dp"/>
+            android:gravity="center"/>
 
     </LinearLayout>
 
